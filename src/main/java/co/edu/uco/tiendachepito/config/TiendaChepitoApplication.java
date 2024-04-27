@@ -1,4 +1,4 @@
-package co.udo.uco.tiendachepito.config;
+package co.edu.uco.tiendachepito.config;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
