@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>co.udo.uco.tiendachepito</groupId>
-	<artifactId>tienda-chepito</artifactId>
+	<artifactId>TiendaChepitoDOO</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>TiendaChepito</name>
 	<description>Aplicacion que contiene todos los servicios de negocio expuestos para los clientes que consumen las APIs de la Tienda Chepito</description>
