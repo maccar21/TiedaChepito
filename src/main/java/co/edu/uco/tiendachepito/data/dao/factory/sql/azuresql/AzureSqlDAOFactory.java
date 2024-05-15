@@ -1,7 +1,10 @@
 package co.edu.uco.tiendachepito.data.dao.factory.sql.azuresql;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
+import co.edu.uco.tiendachepito.crosscutting.helpers.SQLHelper;
 import co.edu.uco.tiendachepito.data.dao.CiudadDAO;
 import co.edu.uco.tiendachepito.data.dao.DepartamentoDAO;
 import co.edu.uco.tiendachepito.data.dao.PaisDAO;
@@ -20,33 +23,34 @@ public final class AzureSqlDAOFactory extends DAOFactory {
 
 	@Override
 	protected void obtenerConexion() {
-		// TODO Auto-generated method stub
-		connection = null;
-
+		final String connectionUrl = "jdbc:sqlserver://<server>:<port>;databaseName=AdventureWorks;user=<user>;password=<password>";
+		try {
+			connection = DriverManager.getConnection(connectionUrl);
+		}catch (final SQLException exception){
+			// TODO Auto-generated catch block
+		} catch (final Exception exception){
+			// TODO Auto-generated catch block
+		}
 	}
 
 	@Override
 	public void iniciarTransaccion() {
-		// TODO Auto-generated method stub
-
+		SQLHelper.initTransaction(connection);
 	}
 
 	@Override
 	public void confirmarTransaccion() {
-		// TODO Auto-generated method stub
-
+		SQLHelper.commit(connection);
 	}
 
 	@Override
 	public void cancelarTransaccion() {
-		// TODO Auto-generated method stub
-
+		SQLHelper.rollback(connection);
 	}
 
 	@Override
 	public void cerrarConexion() {
-		// TODO Auto-generated method stub
-
+		SQLHelper.close(connection);
 	}
 
 	@Override

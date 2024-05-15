@@ -27,7 +27,43 @@ public final class MessageCatalogBase implements MessageCatalog {
 		mensajes.put(CodigoMensaje.M00005.getIdentificador(), new Mensaje(CodigoMensaje.M00005,
 				"El mensaje con identificador \"${1}\" que se intentó obtener, no está configurado para residir en el catálogo de mensajes externo..."));
 		mensajes.put(CodigoMensaje.M00006.getIdentificador(), new Mensaje(CodigoMensaje.M00006,
+
 				"El identificador del mensaje \"${1}\" que se intentó obtener, no está en el catálogo de mensajes externo..."));
+		mensajes.put(CodigoMensaje.M00007.getIdentificador(), new Mensaje(CodigoMensaje.M00007,
+				"Se ha presentado un problema en validar se la coneccion SQL con la fuente de informacion deseada estaba cerrrada..."));
+		mensajes.put(CodigoMensaje.M00008.getIdentificador(), new Mensaje(CodigoMensaje.M00008,
+				"Se ha presentado un problema DESCONOCIDO tratando de validar si la conexion SQL con la fuente de informacion deseada estaba cerrada..."));
+		mensajes.put(CodigoMensaje.M00009.getIdentificador(), new Mensaje(CodigoMensaje.M00009,
+				"Se ha intentado realizar el cierre de una conexion SQL que ya estaba cerrada..."));
+		mensajes.put(CodigoMensaje.M00010.getIdentificador(), new Mensaje(CodigoMensaje.M00010,
+				"Se ha presentado un error tatrando de cerrar la conexion SQL con la fuente de informacion deseada..."));
+		mensajes.put(CodigoMensaje.M00011.getIdentificador(), new Mensaje(CodigoMensaje.M00011,
+				"Se ha presentado un error tatrando de cerrar la conexion SQL con la fuente de informacion deseada..."));
+		mensajes.put(CodigoMensaje.M00012.getIdentificador(), new Mensaje(CodigoMensaje.M00012,
+				"Se ha intentado confirmar una transaccion con una conexion SQL cerrrada..."));
+		mensajes.put(CodigoMensaje.M00013.getIdentificador(), new Mensaje(CodigoMensaje.M00013,
+				"Se ha intentado confirmar una transaccion cuando el autocommit de la conexion con la base de datos estaba activado..."));
+		mensajes.put(CodigoMensaje.M00014.getIdentificador(), new Mensaje(CodigoMensaje.M00014,
+				"Se ha presentado un problema tratando de confirmar una transaccion SQL con la fuente de informacion deseada..."));
+		mensajes.put(CodigoMensaje.M00015.getIdentificador(), new Mensaje(CodigoMensaje.M00015,
+				"Se ha presentado un problema INNESPERADO tratando de confirmar una transaccion SQL con la fuente de informacion deseada..."));
+		mensajes.put(CodigoMensaje.M00016.getIdentificador(), new Mensaje(CodigoMensaje.M00016,
+				"Se ha intentado cancelar una transaccion con una conexion SQL cerrrada..."));
+		mensajes.put(CodigoMensaje.M00017.getIdentificador(), new Mensaje(CodigoMensaje.M00017,
+				"Se ha intentado cancelar una transaccion cuando el autocommit de la conexion con la base de datos estaba activado..."));
+		mensajes.put(CodigoMensaje.M00018.getIdentificador(), new Mensaje(CodigoMensaje.M00018,
+				"Se ha presentado un problema tratando de cancelar una transaccion SQL con la fuente de informacion deseada..."));
+		mensajes.put(CodigoMensaje.M00019.getIdentificador(), new Mensaje(CodigoMensaje.M00019,
+				"Se ha presentado un problema INNESPERADO tratando de cancelar una transaccion SQL con la fuente de informacion deseada..."));
+		mensajes.put(CodigoMensaje.M00020.getIdentificador(), new Mensaje(CodigoMensaje.M00020,
+				"Se ha intentado iniciar una transaccion con una conexion SQL cerrrada..."));
+		mensajes.put(CodigoMensaje.M00021.getIdentificador(), new Mensaje(CodigoMensaje.M00021,
+				"Se ha presentado un problema tratando de iniciar una transaccion SQL con la fuente de informacion deseada..."));
+		mensajes.put(CodigoMensaje.M00022.getIdentificador(), new Mensaje(CodigoMensaje.M00022,
+				"Se ha presentado un problema INNESPERADO tratando de iniciar una transaccion SQL con la fuente de informacion deseada..."));
+
+
+
 
 	}
 
