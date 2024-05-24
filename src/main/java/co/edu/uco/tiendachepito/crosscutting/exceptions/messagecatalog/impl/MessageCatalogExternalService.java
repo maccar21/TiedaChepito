@@ -29,6 +29,8 @@ public final class MessageCatalogExternalService implements MessageCatalog {
 				"Se ha presentado un problema tratando de realizar un delete de la informacion del pais \"${1}\" en la tabla \"Pais\" en la base de datos Azure SQL..."));
 		mensajes.put(CodigoMensaje.M00028.getIdentificador(), new Mensaje(CodigoMensaje.M00028,
 				"Se ha presentado un problema INESPERADO tratando de realizar un delete de la informacion del pais \"${1}\" en la tabla \"Pais\" en la base de datos Azure SQL..."));
+		mensajes.put(CodigoMensaje.M00029.getIdentificador(), new Mensaje(CodigoMensaje.M00029,
+				"Se ha presentado un problema ejecutando la sentancia SQL de consulta de los paises en la base de datos Azure SQL"));
 
 	}
 

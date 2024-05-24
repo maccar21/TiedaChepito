@@ -32,7 +32,10 @@ public enum CodigoMensaje {
 	M00025(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "00025", false),
 	M00026(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "00026", false),
 	M00027(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "00027", false),
-	M00028(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "00028", false);
+	M00028(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "00028", false),
+	M00029(TipoMensaje.TECNICO, CategoriaMensaje.ERROR, "00029", true);
+
+
 
 
 
@@ -65,6 +68,7 @@ public enum CodigoMensaje {
 	public final boolean isBase() {
 		return base;
 	}
+
 	private final void setTipo(final TipoMensaje tipo) {
 		this.tipo = tipo;
 	}
