@@ -9,6 +9,8 @@ import co.edu.uco.tiendachepito.entity.CiudadEntity;
 import co.edu.uco.tiendachepito.entity.DepartamentoEntity;
 import co.edu.uco.tiendachepito.entity.PaisEntity;
 
+import java.util.List;
+
 public final class DepartamentoEntityDomainAssembler implements EntityDomainAssembler<DepartamentoDomain, DepartamentoEntity> {
 
     private static final EntityDomainAssembler<DepartamentoDomain, DepartamentoEntity> instancia = new DepartamentoEntityDomainAssembler();
@@ -40,5 +42,10 @@ public final class DepartamentoEntityDomainAssembler implements EntityDomainAsse
         var paisEntity = paisAssembler.ensamblarEntidad(departamentoDomainTmp.getPais());
 
         return DepartamentoEntity.build(departamentoDomainTmp.getId(), departamentoDomainTmp.getNombre(), paisEntity);
+    }
+
+    @Override
+    public List<DepartamentoDomain> ensamblarListaDominios(List<DepartamentoEntity> listaEntidades) {
+        return null;
     }
 }

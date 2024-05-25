@@ -4,8 +4,12 @@ import co.edu.uco.tiendachepito.business.assembler.entity.EntityDomainAssembler;
 import co.edu.uco.tiendachepito.business.domain.DepartamentoDomain;
 import co.edu.uco.tiendachepito.business.domain.PaisDomain;
 import co.edu.uco.tiendachepito.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.tiendachepito.dto.PaisDTO;
 import co.edu.uco.tiendachepito.entity.DepartamentoEntity;
 import co.edu.uco.tiendachepito.entity.PaisEntity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class PaisEntityDomainAssembler implements EntityDomainAssembler<PaisDomain, PaisEntity> {
 
@@ -15,7 +19,7 @@ public final class PaisEntityDomainAssembler implements EntityDomainAssembler<Pa
         super();
     }
 
-    public static final  EntityDomainAssembler<PaisDomain, PaisEntity> obtenerInstancia(){
+    public static final EntityDomainAssembler<PaisDomain, PaisEntity> obtenerInstancia(){
         return instancia;
     }
 
@@ -30,5 +34,17 @@ public final class PaisEntityDomainAssembler implements EntityDomainAssembler<Pa
     public final PaisEntity ensamblarEntidad(final PaisDomain dominio) {
         var paisDomainTmp = ObjectHelper.getObjectHelper().getDefault(dominio,PaisDomain.crear());
         return PaisEntity.build(paisDomainTmp.getId(), paisDomainTmp.getNombre());
+    }
+
+    @Override
+    public final List<PaisDomain> ensamblarListaDominios(List<PaisEntity> listaEntidades) {
+        var listaEntidaesTmp = ObjectHelper.getObjectHelper().getDefault(listaEntidades, new ArrayList<PaisEntity>());
+        var resultados = new ArrayList<PaisDomain>();
+
+        for (PaisEntity paisEntity : listaEntidaesTmp) {
+            var paisDomainTmp = ensamblarDominio(paisEntity);
+            resultados.add(paisDomainTmp);
+        }
+        return resultados;
     }
 }

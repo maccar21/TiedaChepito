@@ -7,7 +7,7 @@ import co.edu.uco.tiendachepito.crosscutting.exceptions.custom.BusinessTiendaChe
 import co.edu.uco.tiendachepito.data.dao.factory.DAOFactory;
 import co.edu.uco.tiendachepito.entity.CiudadEntity;
 import co.edu.uco.tiendachepito.entity.DepartamentoEntity;
-import org.springframework.boot.autoconfigure.kafka.SslBundleSslEngineFactory;
+
 
 import java.util.List;
 

@@ -7,6 +7,8 @@ import co.edu.uco.tiendachepito.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.tiendachepito.dto.DepartamentoDTO;
 import co.edu.uco.tiendachepito.dto.PaisDTO;
 
+import java.util.List;
+
 public class DepartamentoDTODomainAssembler implements DTODomainAssembler<DepartamentoDomain, DepartamentoDTO> {
 
     private static final DTODomainAssembler<DepartamentoDomain, DepartamentoDTO> instancia =
@@ -41,5 +43,10 @@ public class DepartamentoDTODomainAssembler implements DTODomainAssembler<Depart
         return DepartamentoDTO.build().setId(departamentoDomainTmp.getId())
                 .setNombre(departamentoDomainTmp.getNombre())
                 .setPais(paisDTO);
+    }
+
+    @Override
+    public List<DepartamentoDTO> ensamblarListaDTO(List<DepartamentoDomain> listaDominios) {
+        return null;
     }
 }

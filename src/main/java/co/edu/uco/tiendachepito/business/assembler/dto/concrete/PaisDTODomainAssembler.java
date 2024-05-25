@@ -5,6 +5,9 @@ import co.edu.uco.tiendachepito.business.domain.PaisDomain;
 import co.edu.uco.tiendachepito.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.tiendachepito.dto.PaisDTO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public final class PaisDTODomainAssembler implements DTODomainAssembler<PaisDomain, PaisDTO> {
 
     private static final DTODomainAssembler<PaisDomain, PaisDTO> instancia =
@@ -28,5 +31,18 @@ public final class PaisDTODomainAssembler implements DTODomainAssembler<PaisDoma
     public final PaisDTO ensamblarDTO(final PaisDomain dominio) {
         var paisDomainTmp = ObjectHelper.getObjectHelper().getDefault(dominio, PaisDomain.crear());
         return PaisDTO.build().setId(paisDomainTmp.getId()).setNombre(paisDomainTmp.getNombre())    ;
+    }
+
+    @Override
+    public final List<PaisDTO> ensamblarListaDTO(List<PaisDomain> listaDominios) {
+        var listaDominiosTmp = ObjectHelper.getObjectHelper()
+                .getDefault(listaDominios, new ArrayList<PaisDomain>());
+        var resultados = new ArrayList<PaisDTO>();
+
+        for (PaisDomain paisDomain : listaDominiosTmp) {
+            var paisDtoTmp = ensamblarDTO(paisDomain);
+            resultados.add(ensamblarDTO(paisDomain));
+        }
+        return resultados;
     }
 }

@@ -46,7 +46,7 @@ public final class MessageCatalogBase implements MessageCatalog {
 		mensajes.put(CodigoMensaje.M00014.getIdentificador(), new Mensaje(CodigoMensaje.M00014,
 				"Se ha presentado un problema tratando de confirmar una transaccion SQL con la fuente de informacion deseada..."));
 		mensajes.put(CodigoMensaje.M00015.getIdentificador(), new Mensaje(CodigoMensaje.M00015,
-				"Se ha presentado un problema INNESPERADO tratando de confirmar una transaccion SQL con la fuente de informacion deseada..."));
+				"Se ha presentado un problema INESPERADO tratando de confirmar una transaccion SQL con la fuente de informacion deseada..."));
 		mensajes.put(CodigoMensaje.M00016.getIdentificador(), new Mensaje(CodigoMensaje.M00016,
 				"Se ha intentado cancelar una transaccion con una conexion SQL cerrrada..."));
 		mensajes.put(CodigoMensaje.M00017.getIdentificador(), new Mensaje(CodigoMensaje.M00017,
@@ -54,13 +54,13 @@ public final class MessageCatalogBase implements MessageCatalog {
 		mensajes.put(CodigoMensaje.M00018.getIdentificador(), new Mensaje(CodigoMensaje.M00018,
 				"Se ha presentado un problema tratando de cancelar una transaccion SQL con la fuente de informacion deseada..."));
 		mensajes.put(CodigoMensaje.M00019.getIdentificador(), new Mensaje(CodigoMensaje.M00019,
-				"Se ha presentado un problema INNESPERADO tratando de cancelar una transaccion SQL con la fuente de informacion deseada..."));
+				"Se ha presentado un problema INESPERADO tratando de cancelar una transaccion SQL con la fuente de informacion deseada..."));
 		mensajes.put(CodigoMensaje.M00020.getIdentificador(), new Mensaje(CodigoMensaje.M00020,
 				"Se ha intentado iniciar una transaccion con una conexion SQL cerrrada..."));
 		mensajes.put(CodigoMensaje.M00021.getIdentificador(), new Mensaje(CodigoMensaje.M00021,
 				"Se ha presentado un problema tratando de iniciar una transaccion SQL con la fuente de informacion deseada..."));
 		mensajes.put(CodigoMensaje.M00022.getIdentificador(), new Mensaje(CodigoMensaje.M00022,
-				"Se ha presentado un problema INNESPERADO tratando de iniciar una transaccion SQL con la fuente de informacion deseada..."));
+				"Se ha presentado un problema INESPERADO tratando de iniciar una transaccion SQL con la fuente de informacion deseada..."));
 
 
 

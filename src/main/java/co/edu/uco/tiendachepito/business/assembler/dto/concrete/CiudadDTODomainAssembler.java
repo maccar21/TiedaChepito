@@ -9,6 +9,8 @@ import co.edu.uco.tiendachepito.dto.CiudadDTO;
 import co.edu.uco.tiendachepito.dto.DepartamentoDTO;
 import co.edu.uco.tiendachepito.dto.PaisDTO;
 
+import java.util.List;
+
 public final class CiudadDTODomainAssembler implements DTODomainAssembler<CiudadDomain, CiudadDTO> {
 
     private static final DTODomainAssembler<CiudadDomain, CiudadDTO> instancia = new CiudadDTODomainAssembler();
@@ -37,5 +39,10 @@ public final class CiudadDTODomainAssembler implements DTODomainAssembler<Ciudad
         var ciudadDomainTmp = ObjectHelper.getObjectHelper().getDefault(dominio, CiudadDomain.crear());
         var departamentoDTO = departamentoAssembler.ensamblarDTO(ciudadDomainTmp.getDepartamento());
         return CiudadDTO.build().setId(ciudadDomainTmp.getId()).setNombre(ciudadDomainTmp.getNombre()).setDepartamento(departamentoDTO);
+    }
+
+    @Override
+    public List<CiudadDTO> ensamblarListaDTO(List<CiudadDomain> listaDominios) {
+        return null;
     }
 }
