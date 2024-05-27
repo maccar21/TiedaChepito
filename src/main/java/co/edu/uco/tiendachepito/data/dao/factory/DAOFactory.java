@@ -13,7 +13,7 @@ public abstract class DAOFactory {
 
 	public static final DAOFactory getFactory(final Factory factory){
 		switch(factory){
-			case AZURESQL -> {
+			case AZURE_SQL -> {
 				return new AzureSqlDAOFactory();
 			}
 			case SQLSERVER -> {

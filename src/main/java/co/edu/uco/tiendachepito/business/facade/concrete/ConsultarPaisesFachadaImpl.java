@@ -1,12 +1,10 @@
-package co.edu.uco.tiendachepito.business.facade.concret;
+package co.edu.uco.tiendachepito.business.facade.concrete;
 
-import co.edu.uco.tiendachepito.business.assembler.dto.concrete.CiudadDTODomainAssembler;
+
 import co.edu.uco.tiendachepito.business.assembler.dto.concrete.PaisDTODomainAssembler;
 import co.edu.uco.tiendachepito.business.facade.ConsultarPaisesFachada;
 import co.edu.uco.tiendachepito.business.usecase.ConsultarPaises;
-import co.edu.uco.tiendachepito.business.usecase.RegistrarCiudad;
 import co.edu.uco.tiendachepito.business.usecase.concrete.ConsultarPaisesImpl;
-import co.edu.uco.tiendachepito.business.usecase.concrete.RegistrarCiudadImpl;
 import co.edu.uco.tiendachepito.crosscutting.exceptions.TiendaChepitoException;
 import co.edu.uco.tiendachepito.crosscutting.exceptions.custom.BusinessTiendaChepitoException;
 import co.edu.uco.tiendachepito.data.dao.factory.DAOFactory;
@@ -20,25 +18,23 @@ public final class ConsultarPaisesFachadaImpl implements ConsultarPaisesFachada 
     private DAOFactory factory;
 
     public ConsultarPaisesFachadaImpl(){
-        factory = DAOFactory.getFactory(Factory.AZURESQL);
+        factory = DAOFactory.getFactory(Factory.AZURE_SQL);
     }
-
     @Override
     public final List<PaisDTO> execute(final PaisDTO pais) {
-        try{
+        try {
             var paisDomain = PaisDTODomainAssembler.obtenerInstancia().ensamblarDominio(pais);
 
-            final ConsultarPaises UseCase = new ConsultarPaisesImpl(factory);
-            var resultados = UseCase.ejecutar(paisDomain);
+            final ConsultarPaises useCase = new ConsultarPaisesImpl(factory);
+            var resultados = useCase.ejecutar(paisDomain);
             return PaisDTODomainAssembler.obtenerInstancia()
-                            .ensamblarListaDTO(resultados);
+                    .ensamblarListaDTO(resultados);
 
-        }catch (final TiendaChepitoException exception){
+        }catch (TiendaChepitoException exception){
             throw exception;
-        }catch (final Exception exception){
-
+        }catch (Exception exception){
             var mensajeUsuario = "Se ha presentado un problema tratando de consultar la informacion de los paises";
-            var mensajeTecnico = "Se ha presentado un problema inesperado tratando de conusltar la informacion de los paises. Por favor revise la traza completa del problema";
+            var mensajeTecnico = "Se ha presentado un problema INESPERADO tratando de consultar la informacion de los paises";
 
             throw new BusinessTiendaChepitoException(mensajeTecnico, mensajeUsuario);
         } finally {

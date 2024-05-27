@@ -48,7 +48,7 @@ public final class PaisAzureSqlDAO extends SqlConnection implements PaisDAO {
 	public final void actualizar(final PaisEntity entidad) {
 		final var sentenciaSql = new StringBuilder();
 		
-		sentenciaSql.append("UPDATE Pais");
+		sentenciaSql.append("UPDATE Pais ");
 		sentenciaSql.append("SET Nombre = ? ");
 		sentenciaSql.append("WHERE id = ? ");
 
@@ -97,46 +97,44 @@ public final class PaisAzureSqlDAO extends SqlConnection implements PaisDAO {
 	}
 
 	@Override
-	public final List<PaisEntity> consultar(final PaisEntity entidad) {
+	public List<PaisEntity> consultar(final PaisEntity entidad) {
+		final List<PaisEntity> listaPaises = new ArrayList<>();
+		final StringBuilder sentenciaSql = new StringBuilder();
+		final List<Object> parametros = new ArrayList<>();
 
-		final var listaPaises = new ArrayList<PaisEntity>();
-		final var sentenciaSql = new StringBuilder();
-		sentenciaSql.append("SELECT id, nombre ");
-		sentenciaSql.append("FROM Pais ");
-		sentenciaSql.append("ORDER BY nombre ASC ");
+		sentenciaSql.append("SELECT id, nombre FROM Pais WHERE 1 = 1");
 
-		try (final PreparedStatement sentenciaPreparada = getConnection().prepareStatement(sentenciaSql.toString())){
-
-			try(final ResultSet resultados = sentenciaPreparada.executeQuery()){
-
-				while (resultados.next()){
-					PaisEntity paisTmp = PaisEntity.build(resultados.getInt("id"), resultados.getString("nombre"));
-					listaPaises.add(paisTmp);
-				}
-
-			}catch (SQLException exception){
-				var mensajeUsuario = "No ha sido posible llevar a cabo la consulta de la informacion de los paises. Por favor intente de nuevo y en caso de pérsisitir el problema, comuniquese con el administrador de la Tienda Chepito...";
-				var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00029);
-
-				throw new DataTiendaChepitoException(mensajeTecnico, mensajeUsuario, exception);
-			}
-
-		}catch (final DataTiendaChepitoException exception){
-			throw exception;
-		} catch (SQLException exception){
-			var mensajeUsuario = "No ha sido posible llevar a cabo la consulta de la informacion de los paises. Por favor intente de nuevo y en caso de pérsisitir el problema, comuniquese con el administrador de la Tienda Chepito...";
-			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00029);
-
-			throw new DataTiendaChepitoException(mensajeTecnico, mensajeUsuario, exception);
+		if (entidad.getId() != 0) {
+			sentenciaSql.append(" AND Id = ?");
+			parametros.add(entidad.getId());
 		}
 
-		catch (final Exception exception){
-			var mensajeUsuario = "No ha sido posible llevar a cabo la consulta de la informacion del nuevo pais. Por favor intente de nuevo y en caso de pérsisitir el problema, comuniquese con el administrador de la Tienda Chepito...";
+		if (!entidad.getNombre().isEmpty()) {
+			sentenciaSql.append(" AND Nombre LIKE ?");
+			parametros.add("%" + entidad.getNombre() + "%");
+		}
+
+		try (final PreparedStatement sentenciaPreparada = getConnection().prepareStatement(sentenciaSql.toString())) {
+			int index = 1;
+			for (Object parametro : parametros) {
+				sentenciaPreparada.setObject(index++, parametro);
+			}
+
+			try (final ResultSet resultado = sentenciaPreparada.executeQuery()) {
+				while (resultado.next()) {
+					listaPaises.add(new PaisEntity(resultado.getInt("Id"), resultado.getString("Nombre")));
+				}
+			}
+		} catch (SQLException exception) {
+			var mensajeUsuario = "No ha sido posible consultar la información de los países. Por favor, inténtelo de nuevo o comuníquese con el administrador.";
+			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00029);
+			throw new DataTiendaChepitoException(mensajeTecnico, mensajeUsuario, exception);
+		} catch (final Exception exception) {
+			var mensajeUsuario = "No ha sido posible llevar a cabo la eliminacion de la informacion del nuevo pais. Por favor intente de nuevo y en caso de pérsisitir el problema, comuniquese con el administrador de la Tienda Chepito...";
 			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00030);
 
 			throw new DataTiendaChepitoException(mensajeTecnico, mensajeUsuario, exception);
 		}
-		
 		return listaPaises;
 	}
 

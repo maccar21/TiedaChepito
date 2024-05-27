@@ -3,7 +3,6 @@ package co.edu.uco.tiendachepito.data.dao.factory.sql.azuresql;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.UUID;
 
 import co.edu.uco.tiendachepito.crosscutting.exceptions.custom.DataTiendaChepitoException;
 import co.edu.uco.tiendachepito.crosscutting.exceptions.messagecatalog.MessageCatalogStrategy;
@@ -82,16 +81,23 @@ public final class AzureSqlDAOFactory extends DAOFactory {
 
 	public static void main(String[] args) {
 		try {
-			DAOFactory factory = DAOFactory.getFactory(Factory.AZURESQL);
+			DAOFactory factory = DAOFactory.getFactory(Factory.AZURE_SQL);
 
 			System.out.println("Iniciando transacción...");
 			factory.iniciarTransaccion();
 
 			System.out.println("Creando país aleatoriamente");
-			factory.getPaisDAO().crear(PaisEntity.build(0, "Colombia-" + UUID.randomUUID().toString()));
+			factory.getPaisDAO().crear(PaisEntity.build(0));
+
+			System.out.println("Editar pais: ");
+			factory.getPaisDAO().actualizar(PaisEntity.build(41, "Nigeria"));
 
 			System.out.println("Consultamos países: ");
-			var resultados = factory.getPaisDAO().consultar(PaisEntity.build(5));
+			var resultados = factory.getPaisDAO().consultar(PaisEntity.build(39));
+
+			System.out.println("Eliminar pais: ");
+			factory.getPaisDAO().eliminar(39);
+
 
 			for (PaisEntity paisEntity : resultados) {
 				System.out.println("id: " + paisEntity.getId() + ", nombre: " + paisEntity.getNombre());

@@ -1,4 +1,4 @@
-package co.edu.uco.tiendachepito.business.facade.concret;
+package co.edu.uco.tiendachepito.business.facade.concrete;
 
 import co.edu.uco.tiendachepito.business.assembler.dto.concrete.CiudadDTODomainAssembler;
 import co.edu.uco.tiendachepito.business.facade.RegistrarCiudadFachada;
@@ -15,7 +15,7 @@ public class ResgistarCiudadFachadaImpl implements RegistrarCiudadFachada {
     private DAOFactory factory;
 
     public ResgistarCiudadFachadaImpl(){
-        factory = DAOFactory.getFactory(Factory.AZURESQL);
+        factory = DAOFactory.getFactory(Factory.AZURE_SQL);
     }
 
     @Override
